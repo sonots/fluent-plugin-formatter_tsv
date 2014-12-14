@@ -4,7 +4,7 @@ require 'fluent/plugin/formatter_tsv'
 
 class TsvFormatterTest < ::Test::Unit::TestCase
   def setup
-    @formatter = Fluent::TextFormatter::TEMPLATE_REGISTRY.lookup('tsv').call
+    @formatter = Fluent::Plugin.new_formatter('tsv')
     @time = Fluent::Engine.now
   end
 

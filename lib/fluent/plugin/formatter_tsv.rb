@@ -1,9 +1,7 @@
 module Fluent
   module TextFormatter
-    register_template("tsv", Proc.new { TSVFormatter.new })
-  
-    class TSVFormatter
-      # Fluent::Plugin.register_formatter('tsv', self) # will be like this
+    class TSVFormatter < Formatter
+      Plugin.register_formatter('tsv', self)
 
       include Configurable # This enables the use of config_param
       include HandleTagAndTimeMixin # If you wish to use tag_key, time_key, etc.
