@@ -8,8 +8,12 @@ class TsvFormatterTest < ::Test::Unit::TestCase
     @time = Fluent::Engine.now
   end
 
+  def e(name, arg='', attrs={}, elements=[])
+    Fluent::Config::Element.new(name, arg, attrs, elements)
+  end
+
   def configure(conf)
-    @formatter.configure({'utc' => true}.merge(conf))
+    @formatter.configure(e('ROOT', '', {'utc' => true}.merge(conf)))
   end
 
   def test_format
